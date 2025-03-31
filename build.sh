@@ -1,4 +1,5 @@
-sudo apt install musl-tools -y
+sudo apt install musl-tools -y --no-install-recommends
+sudo apt autoremove man-db -y
 repo=oksh
 echo $repo > repo
 git clone --depth=1 https://github.com/ibara/oksh
