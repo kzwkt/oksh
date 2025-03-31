@@ -8,8 +8,7 @@ export CC=musl-gcc
 export CFLAGS="-std=c99 -static -Os -fPIE -pipe -Wextra -Wall"
 export LDFLAGS="-s -static -static-pie"
 ./configure --no-thanks
-make DESTDIR="$PWD/pkg" install
-tar -czvf $repo-static.tar.gz -C "$PWD/pkg" .
+make 
 
 
 
