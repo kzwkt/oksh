@@ -1,11 +1,13 @@
 sudo apt install musl-tools -y
-repo=ubase
+repo=oksh
 echo $repo > repo
-git clone --depth=1 https://git.suckless.org/$repo/
-cp config.mk  $repo/
-cp Makefile  $repo/
+git clone --depth=1 https://github.com/ibara/oksh
 cd $repo
-make DESTDIR="$PWD/pkg" ubase-box-install
+export CC=musl-gcc
+export CFLAGS="-std=c99 -static -Os -fPIE -pipe -Wextra -Wall"
+export LDFLAGS="-s -static -static-pie"
+./configure --no-thanks
+make DESTDIR="$PWD/pkg" install
 tar -czvf $repo-static.tar.gz -C "$PWD/pkg" .
 
 
